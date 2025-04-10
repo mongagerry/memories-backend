@@ -17,17 +17,17 @@ const PORT = process.env.PORT || 5000;
 app.use('/posts', postroutes)
 
 
-app.get('/', (req, res) => {
-  res.send('Welcome');
-});
 
-    
-    app.listen(PORT, () =>{
-    console.log("server")
-    })
 mongoose.connect(connection_url)
 .then(() => {
-    
+  app.get('/', (req, res) => {
+    res.send('Welcome');
+  });
+  
+      
+      app.listen(PORT, () =>{
+      console.log("server")
+      })
 }) 
 .catch(() => console.log("error"));
 mongoose.connection.on('disconnected', () => {
