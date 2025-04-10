@@ -14,9 +14,7 @@ app.use(cors());
 const connection_url = process.env.CONNECTION_URL
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(connection_url)
-.then(() => {
-    app.use('/posts', postroutes)
+app.use('/posts', postroutes)
 
 
 
@@ -26,6 +24,9 @@ mongoose.connect(connection_url)
     app.listen(PORT, () =>{
     console.log("server")
     })
+mongoose.connect(connection_url)
+.then(() => {
+    
 }) 
 .catch(() => console.log("error"));
 mongoose.connection.on('disconnected', () => {
