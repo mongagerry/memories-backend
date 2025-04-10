@@ -17,8 +17,9 @@ const PORT = process.env.PORT || 5000;
 app.use('/posts', postroutes)
 
 
-
-
+app.get('/', (req, res) => {
+  res.send('Welcome');
+});
 
     
     app.listen(PORT, () =>{
