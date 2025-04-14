@@ -31,6 +31,7 @@ export const signup = async (req, res) => {
       httpOnly: true, 
       secure: false, 
       sameSite: 'Lax',
+      maxAge: 24 * 60 * 60 * 1000
     }).json({ user:newUser, message: 'Signup successful' });
   } catch (error) {
     //console.log(error.message);
@@ -64,7 +65,8 @@ export const signin = async(req, res) => {
   res.status(201).cookie('token', token, {
     httpOnly:true,
     secure:false,
-    sameSite:'Lax'
+    sameSite:'Lax',
+    maxAge: 24 * 60 * 60 * 1000
   }).json(user)
 }
 
@@ -84,6 +86,7 @@ export const googlesignin = async(req, res) => {
   res.status(201).cookie('token', jwttoken, {
     httpOnly:true,
     secure:false,
-    sameSite:'Lax'
+    sameSite:'Lax',
+    maxAge: 24 * 60 * 60 * 1000
   }).json(user)
 }
