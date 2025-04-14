@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 import userroutes from './routes/users.js'
 import cookieParser from 'cookie-parser';
 import {authorise} from './middlewares/auth.js'
-
+import session from 'express-session';
 
 dotenv.config()
 const app = express();
@@ -18,6 +18,17 @@ app.use(cors({
   credentials:true,
 }));
 app.use(cookieParser())
+app.use(session({
+  secret: process.env.secret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    secure: false,           // set to true in production with HTTPS
+    sameSite: 'lax',
+    maxAge: 24 * 60 * 60 * 1000 // ⬅️ 1 day in milliseconds
+  }
+}));
 
 const connection_url = process.env.CONNECTION_URL
 const PORT = process.env.PORT || 5000;
