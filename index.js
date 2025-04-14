@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors({
-  origin:'https://transcendent-alpaca-5082ae.netlify.app',
+  origin:'https://celadon-scone-53a103.netlify.app',
   credentials:true,
 }));
 app.use(cookieParser())
