@@ -85,8 +85,8 @@ export const googlesignin = async(req, res) => {
   //console.log(user)
   res.status(201).cookie('token', jwttoken, {
     httpOnly:true,
-    secure:false,
-    sameSite:'Lax',
+    secure:true,
+    sameSite:'none',
     maxAge: 24 * 60 * 60 * 1000
   }).json(user)
 }
