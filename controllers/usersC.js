@@ -29,8 +29,8 @@ export const signup = async (req, res) => {
     }, process.env.secret, {expiresIn:'1h'})
     res.status(201).cookie('token', token,{
       httpOnly: true, 
-      secure: false, 
-      sameSite: 'Lax',
+      secure: true, 
+      sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000
     }).json({ user:newUser, message: 'Signup successful' });
   } catch (error) {
@@ -42,8 +42,8 @@ export const signup = async (req, res) => {
 export const logout = (req, res) => {
   res.clearCookie('token', {
     httpOnly:true,
-    secure:false,
-    sameSite:'Lax'
+    secure:true,
+    sameSite:'none'
   })
   res.json({message:'Logout Success'})
 }
@@ -64,8 +64,8 @@ export const signin = async(req, res) => {
     //console.log(user)
   res.status(201).cookie('token', token, {
     httpOnly:true,
-    secure:false,
-    sameSite:'Lax',
+    secure:true,
+    sameSite:'none',
     maxAge: 24 * 60 * 60 * 1000
   }).json(user)
 }
